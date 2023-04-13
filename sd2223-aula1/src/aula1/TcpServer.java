@@ -1,6 +1,7 @@
-package aula1;
+package aula1.aula1;
 
 import java.net.* ;
+
 
 /**
  * Basic TCP server... 
@@ -14,6 +15,11 @@ public class TcpServer {
 	public static void main(String[] args) throws Exception {
         
 		// Use Discovery to announce the uri of this server, in the form of (tcp://hostname:port)
+        Discovery discovery = new DiscoveryImpl();
+        String uri = "tcp://" + InetAddress.getLocalHost().getHostName() + ":" + PORT;
+        String service = "my-tcp-server";
+        discovery.announce(service, uri);
+
 
         
 		try(var ss = new ServerSocket( PORT )) {
